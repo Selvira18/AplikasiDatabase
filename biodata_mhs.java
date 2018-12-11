@@ -338,6 +338,35 @@ public class biodata_mhs extends javax.swing.JFrame {
     }//GEN-LAST:event_bnRefreshActionPerformed
 
     private void bnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnUbahActionPerformed
+        String jeniskelamin = null;
+        if (rbLaki.isSelected()) {
+    jeniskelamin = "Laki-Laki";
+        } else if (rbPerempuan.isSelected()) {
+    jeniskelamin = "Perempuan";
+}
+        String sql = "update biodata_mhs set nama='" + txtNama.getText()
+        + "',jenis_kelamin='" + jeniskelamin
+        + "',tanggal_lahir='" + txtTanggal.getText()
+        + "',alamat='" + txtAlamat.getText()
+        + "',jurusan='" + cbJurusan.getSelectedItem()
+        + "',fakultas='" + cbFakultas.getSelectedItem()
+        + "',Angkatan='" + cbAngkatan.getSelectedItem()
+        + "'where nim='" + txtNim.getText().trim() + "'";
+
+        if (txtNim.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Terjadi error pada saat update data");
+        }
+        txtNim.requestFocus();
+    
+        
+    try {
+         java.sql.Statement statement = Konekasi.getConnection.creatStatement();
+         JOptionPane.showMessageDialog(null, "Data Berhasil di Ubah");
+         statement.close();
+         txtNim.requestFocus();
+         Tampilan();
+    } catch (Exception exc) {
+        System.err.println("Error :" + exc);
     
     }//GEN-LAST:event_bnUbahActionPerformed
 
